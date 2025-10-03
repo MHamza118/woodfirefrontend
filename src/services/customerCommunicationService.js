@@ -5,7 +5,7 @@ import customerApiService from './customerApiService'
 
 class CustomerCommunicationService {
   constructor() {
-    this.baseURL = import.meta.env.VITE_API_BASE_URL || 'https://woodfire.food/api/v1'
+    this.baseURL = import.meta.env.VITE_API_BASE_URL || 'https://api.woodfire.food/api/v1'
   }
 
   // Get customer announcements (from API)

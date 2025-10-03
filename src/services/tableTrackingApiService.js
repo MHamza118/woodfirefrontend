@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://woodfire.food/api/v1'
+const API_BASE_URL = 'https://api.woodfire.food/api/v1'
 
 class TableTrackingApiService {
     constructor() {

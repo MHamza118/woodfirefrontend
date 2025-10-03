@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // Base configuration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://woodfire.food/api/v1'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.woodfire.food/api/v1'
 
 class TicketsApiService {
     constructor() {
