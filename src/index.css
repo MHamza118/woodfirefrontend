@@ -1,0 +1,803 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations and styles */
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .font-alt {
+    font-family: 'Poppins', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Custom button styles */
+  .btn-primary {
+    @apply bg-gold-gradient hover:shadow-2xl text-charcoal font-semibold px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3;
+  }
+
+  /* Custom input styles */
+  .input-field {
+    @apply w-full px-4 py-3 border border-charcoal/20 rounded-xl focus:ring-2 focus:ring-gold focus:border-transparent transition-all;
+  }
+
+  /* Custom card styles */
+  .card-elegant {
+    @apply bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl;
+  }
+
+  /* Floating label animation */
+  .floating-label {
+    @apply absolute left-4 top-3 text-charcoal/50 transition-all duration-200 pointer-events-none;
+  }
+
+  .floating-label.active {
+    @apply -top-2 left-2 text-xs bg-white px-2 text-gold;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Line clamp utilities for text truncation */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent;
+  }
+
+  /* Custom shadows */
+  .shadow-elegant {
+    box-shadow: 0 25px 50px -12px rgba(28, 28, 28, 0.25);
+  }
+
+  /* Backdrop blur utilities */
+  .backdrop-blur-elegant {
+    backdrop-filter: blur(20px);
+  }
+
+  /* exact logo colors*/
+  .bg-logo-charcoal {
+    background-color: #1C1C1C !important;
+  }
+
+  .text-logo-gold {
+    color: #D4AF37 !important;
+  }
+
+  .text-logo-cream {
+    color: #FAF9F6 !important;
+  }
+}
+
+/* Custom keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes fadeIn {
+  0% { 
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+/* Desktop notification modal behavior (screens larger than 480px) */
+@media (min-width: 481px) {
+  .notification-desktop-modal {
+    display: block !important;
+  }
+  
+  .notification-mobile-modal {
+    display: none !important;
+  }
+  
+  /* Desktop button text display */
+  .mobile-desktop-text {
+    display: inline !important;
+  }
+  
+  .mobile-short-text {
+    display: none !important;
+  }
+}
+
+/* Modal scrolling styles */
+.modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.6) rgba(0, 0, 0, 0.1);
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.6);
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.8);
+}
+
+/* Enhanced scrollable content */
+.scrollable-modal {
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.5) rgba(0, 0, 0, 0.1);
+}
+
+.scrollable-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-modal::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.scrollable-modal::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 3px;
+}
+
+.scrollable-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7);
+}
+
+/* Mobile responsiveness for screens 480px and below */
+@media (max-width: 480px) {
+  /* Ensure sidebar is hidden by default on mobile */
+  .sidebar-mobile-hidden {
+    transform: translateX(-100%) !important;
+  }
+  
+  /* Adjust main content for mobile */
+  .main-content-mobile {
+    margin-left: 0 !important;
+  }
+  
+  /* Remove any left margin on mobile */
+  .mobile-full-width {
+    margin-left: 0 !important;
+    left: 0 !important;
+  }
+  
+  /* Hide logo text on very small screens */
+  .logo-text-mobile-hidden {
+    display: none !important;
+  }
+  
+  /* Adjust header and content padding on mobile */
+  .header-mobile {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .content-mobile {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Ensure proper z-index stacking on mobile */
+  .mobile-sidebar {
+    z-index: 9999 !important;
+  }
+  
+  .mobile-overlay {
+    z-index: 9998 !important;
+  }
+  
+  /* Improve touch targets for mobile */
+  .mobile-nav-item {
+    padding: 0.875rem !important;
+    min-height: 48px;
+  }
+  
+  /* Responsive text sizing */
+  .mobile-title {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+  
+  .mobile-subtitle {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+  
+  /* Responsive cards and tables */
+  .mobile-card {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  .mobile-table-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  .mobile-table {
+    min-width: 600px !important;
+  }
+  
+  /* Grid adjustments for mobile */
+  .mobile-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  /* Employee Management Stats Cards Mobile Layout - 5 cards (odd) */
+  .employee-stats-mobile {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Last card (5th) spans full width for odd count */
+  .employee-stats-mobile .employee-stat-card:nth-child(5) {
+    grid-column: 1 / -1 !important;
+  }
+  
+  /* Department Management Stats Cards Mobile Layout - 3 cards (odd) */
+  .department-stats-mobile {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Last card (3rd) spans full width for odd count */
+  .department-stats-mobile > div:nth-child(3) {
+    grid-column: 1 / -1 !important;
+  }
+  
+  /* Role Assignment Stats Cards Mobile Layout - 4 cards (even) */
+  .role-stats-mobile {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* No full-width card needed for even count (4 cards) */
+  
+  /* Fix padding for mobile screens */
+  .mobile-content-padding {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  /* Professional Header Styling for Mobile */
+  .mobile-main-header {
+    font-size: 1.125rem !important; /* text-lg */
+    line-height: 1.5rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+  
+  .mobile-section-header {
+    font-size: 1rem !important; /* text-base */
+    line-height: 1.25rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .mobile-modal-header {
+    font-size: 1rem !important; /* text-base */
+    line-height: 1.25rem !important;
+  }
+  
+  .mobile-subsection-header {
+    font-size: 0.875rem !important; /* text-sm */
+    line-height: 1.25rem !important;
+  }
+  
+  /* Professional Button Styling for Mobile */
+  .mobile-primary-button {
+    padding: 0.5rem 0.875rem !important; /* px-3.5 py-2 */
+    font-size: 0.75rem !important; /* text-xs */
+    font-weight: 600 !important;
+    min-height: 32px !important;
+  }
+  
+  .mobile-secondary-button {
+    padding: 0.375rem 0.75rem !important; /* px-3 py-1.5 */
+    font-size: 0.75rem !important; /* text-xs */
+    font-weight: 500 !important;
+    min-height: 28px !important;
+  }
+  
+  .mobile-icon-button {
+    padding: 0.375rem !important; /* p-1.5 */
+    min-height: 28px !important;
+    min-width: 28px !important;
+  }
+  
+  .mobile-action-button {
+    padding: 0.25rem 0.5rem !important; /* px-2 py-1 */
+    font-size: 0.625rem !important; /* text-xs */
+    min-height: 24px !important;
+  }
+  
+  /* Ensure buttons have proper backgrounds and contrast */
+  .mobile-gold-button {
+    background-color: #D4AF37 !important;
+    color: #1C1C1C !important;
+  }
+  
+  .mobile-gold-button:hover {
+    background-color: #B8941F !important;
+  }
+  
+  .mobile-navy-header {
+    background: linear-gradient(90deg, #2C3E50, rgba(44, 62, 80, 0.9)) !important;
+    padding: 0.75rem 1rem !important;
+  }
+  
+  .mobile-card-padding {
+    padding: 0.75rem !important;
+  }
+  
+  .mobile-modal-padding {
+    padding: 1rem !important;
+  }
+  
+  /* Better text alignment and spacing */
+  .mobile-text-left {
+    text-align: left !important;
+  }
+  
+  .mobile-text-center {
+    text-align: center !important;
+  }
+  
+  .mobile-justify-between {
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  
+  .mobile-justify-end {
+    justify-content: flex-end !important;
+  }
+  
+  /* SELECTIVE MOBILE ICON HIDING SYSTEM */
+  
+  /* Only hide icons from buttons that have the mobile-hide-button-icons class */
+  .mobile-hide-button-icons .lucide,
+  .mobile-hide-button-icons svg {
+    display: none !important;
+  }
+  
+  /* Show mobile text content when icons are hidden */
+  .mobile-text-content {
+    display: inline !important;
+  }
+  
+  /* Ensure proper button styling for buttons with hidden icons */
+  .mobile-hide-button-icons {
+    gap: 0 !important;
+    padding: 0.5rem 0.875rem !important;
+    min-width: auto !important;
+    text-align: center !important;
+  }
+  
+  /* Make all tables horizontally scrollable on mobile */
+  .table-container,
+  .overflow-x-auto {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* Ensure tables have minimum width for readability */
+  table {
+    min-width: 700px !important;
+  }
+  
+  /* Better table cell padding on mobile */
+  td, th {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Make table headers sticky */
+  thead th {
+    position: sticky !important;
+    top: 0 !important;
+    background: white !important;
+    z-index: 10 !important;
+  }
+  
+  /* Improved header text alignment */
+  .mobile-header-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  
+  /* Better stats card alignment */
+  .mobile-stat-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  /* Responsive table headers */
+  .mobile-table-header {
+    text-align: left !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+  
+  /* Better modal header alignment */
+  .mobile-modal-header-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    position: relative !important;
+  }
+  
+  /* Ensure proper button container alignment */
+  .mobile-button-container {
+    display: flex !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+  }
+  
+  /* NOTIFICATION MODAL RESPONSIVE BEHAVIOR */
+  
+  /* On mobile (480px and below), hide desktop modal and show mobile modal */
+  .notification-desktop-modal {
+    display: none !important;
+  }
+  
+  .notification-mobile-modal {
+    display: flex !important;
+  }
+  
+  /* Ensure notifications are properly positioned and sized on mobile */
+  .notification-mobile-modal .mobile-modal-padding {
+    padding: 0 !important;
+    max-width: 90vw !important;
+    width: 100% !important;
+  }
+  
+  /* Better notification content spacing on mobile */
+  .notification-mobile-modal .mobile-card-padding {
+    padding: 0.75rem !important;
+  }
+  
+  .notification-mobile-modal .mobile-modal-header-container {
+    padding: 0.875rem !important;
+    border-bottom: 1px solid #E5E7EB !important;
+  }
+  
+  /* Responsive notification text */
+  .notification-mobile-modal .mobile-subsection-header {
+    font-size: 0.8rem !important;
+    line-height: 1.2rem !important;
+    font-weight: 600 !important;
+  }
+  
+  .notification-mobile-modal .mobile-subtitle {
+    font-size: 0.75rem !important;
+    line-height: 1.1rem !important;
+  }
+  
+  /* Notification action buttons on mobile */
+  .notification-mobile-modal .mobile-action-button {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.625rem !important;
+    border-radius: 0.375rem !important;
+  }
+  
+  /* Personal Information section mobile styling */
+  .mobile-hide-header-icons {
+    display: none !important;
+  }
+  
+  /* Better mobile button spacing and alignment */
+  .mobile-button-container {
+    gap: 0.375rem !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  /* Ensure mobile buttons have proper text visibility */
+  .mobile-hide-button-icons {
+    gap: 0 !important;
+    justify-content: center !important;
+  }
+  
+  /* Mobile button text switching */
+  .mobile-desktop-text {
+    display: none !important;
+  }
+  
+  .mobile-short-text {
+    display: inline !important;
+  }
+  
+  /* Fix mobile header button spacing */
+  .mobile-header-button {
+    position: absolute !important;
+    right: 1rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  
+  /* Landing page mobile optimizations */
+  .mobile-hide-landing-icons {
+    display: none !important;
+  }
+  
+  /* Training section mobile optimizations - Hide icons from hero and section headers */
+  .mobile-hide-hero-icon {
+    display: none !important;
+  }
+  
+  .mobile-hide-section-header-icon {
+    display: none !important;
+  }
+  
+  /* Training header mobile optimization */
+  .training-header-mobile {
+    font-size: 1.125rem !important; /* text-lg */
+    line-height: 1.5rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+  
+  /* Professional Training Modules Header Mobile Styling */
+  .training-modules-header {
+    margin-bottom: 1.5rem !important;
+    padding: 0 0.25rem !important;
+  }
+  
+  .training-modules-header > div {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  
+  .training-modules-title {
+    font-size: 1.125rem !important; /* text-lg */
+    line-height: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    flex: none !important;
+  }
+  
+  .training-modules-count {
+    font-size: 0.75rem !important; /* text-xs */
+    line-height: 1rem !important;
+    color: #6B7280 !important; /* gray-500 */
+    font-weight: 500 !important;
+    margin: 0 !important;
+    align-self: flex-start !important;
+  }
+  
+  /* Training modules grid mobile optimization */
+  .training-modules-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  /* Training module cards mobile styling */
+  .training-modules-grid > div {
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  
+  /* Personal Info Section Mobile Optimizations */
+  .mobile-personal-info-grid {
+    display: block !important;
+  }
+  
+  .mobile-personal-info-section {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .mobile-form-field {
+    margin-bottom: 1rem !important;
+  }
+  
+  .mobile-textarea {
+    min-height: 80px !important;
+  }
+  
+  /* Schedule & Role Assignment Mobile Optimizations */
+  .role-assignment-stats-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+  
+  .role-assignment-details-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .schedule-availability-grid {
+    gap: 1rem !important;
+  }
+  
+  .manual-schedule-grid {
+    gap: 1rem !important;
+  }
+  
+  /* Ensure proper spacing for mobile personal info forms */
+  .mobile-form-container {
+    padding: 1rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Better mobile modal behavior */
+  .mobile-modal-container {
+    max-width: 95vw !important;
+    max-height: 85vh !important;
+    margin: 1rem !important;
+  }
+  
+  /* Improve form field focus on mobile */
+  .mobile-form-input:focus {
+    transform: none !important;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5) !important;
+  }
+  
+  /* Seating page mobile optimizations */
+  .mobile-seating-form {
+    padding: 1.5rem !important;
+    margin: 0.5rem !important;
+  }
+  
+  .mobile-seating-header {
+    margin-bottom: 1rem !important;
+  }
+  
+  .mobile-back-arrow {
+    position: absolute !important;
+    left: -0.5rem !important;
+    z-index: 10 !important;
+  }
+  
+  .mobile-seating-title {
+    font-size: 1.25rem !important;
+    line-height: 1.5rem !important;
+    padding: 0 2.5rem !important;
+  }
+  
+  .mobile-subtitle {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+    white-space: nowrap !important;
+    margin-top: 0.5rem !important;
+  }
+  
+  .mobile-form-label {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .mobile-form-input {
+    padding: 0.75rem 1rem 0.75rem 2.75rem !important;
+    font-size: 1rem !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  .mobile-input-icon {
+    padding-left: 0.75rem !important;
+  }
+  
+  .mobile-submit-button {
+    padding: 0.875rem 1.5rem !important;
+    font-size: 1rem !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  .mobile-footer-text {
+    font-size: 0.75rem !important;
+  }
+  
+  /* Warning text wrapping for training modals */
+  .mobile-warning-text {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+    line-height: 1.4 !important;
+  }
+  
+  .mobile-warning-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+  
+  .mobile-warning-icon {
+    align-self: flex-start !important;
+    flex-shrink: 0 !important;
+    margin-top: 0.25rem !important;
+  }
+  
+  /* Hide employee icons on mobile */
+  .hidden-480 {
+    display: none !important;
+  }
+}
