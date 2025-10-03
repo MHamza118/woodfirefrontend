@@ -1,3 +1,5 @@
+import { fetchCSRFCookie } from './csrfHelper.js';
+
 class CustomerApiService {
   constructor() {
     this.baseURL = import.meta.env.VITE_API_BASE_URL || 'https://woodfire.food/api/v1';
@@ -40,6 +42,7 @@ class CustomerApiService {
     const url = `${this.baseURL}${endpoint}`;
     const config = {
       headers: this.getHeaders(),
+      credentials: 'include', // Include cookies for CSRF/Sanctum
       ...options,
     };
 
@@ -61,6 +64,12 @@ class CustomerApiService {
   // Customer Authentication APIs
   async registerCustomer(customerData) {
     try {
+      // Fetch CSRF cookie before registration
+      const csrfResult = await fetchCSRFCookie();
+      if (!csrfResult.success) {
+        console.warn('CSRF cookie fetch failed, proceeding anyway:', csrfResult.error);
+      }
+
       const response = await this.makeRequest('/auth/customer/register', {
         method: 'POST',
         body: JSON.stringify(customerData),
@@ -83,6 +92,12 @@ class CustomerApiService {
 
   async loginCustomer(email, password) {
     try {
+      // Fetch CSRF cookie before login
+      const csrfResult = await fetchCSRFCookie();
+      if (!csrfResult.success) {
+        console.warn('CSRF cookie fetch failed, proceeding anyway:', csrfResult.error);
+      }
+
       const response = await this.makeRequest('/auth/customer/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),

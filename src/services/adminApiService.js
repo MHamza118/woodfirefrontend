@@ -1,3 +1,5 @@
+import { fetchCSRFCookie } from './csrfHelper.js';
+
 const API_BASE_URL = 'https://woodfire.food/api/v1'
 class AdminApiService {
     constructor() {
@@ -24,6 +26,7 @@ class AdminApiService {
         const requestOptions = {
             ...defaultOptions,
             ...options,
+            credentials: 'include', // Include cookies for CSRF/Sanctum
             headers: {
                 ...defaultOptions.headers,
                 ...options.headers
@@ -55,6 +58,12 @@ class AdminApiService {
      */
     async loginAdmin(email, password) {
         try {
+            // Fetch CSRF cookie before login
+            const csrfResult = await fetchCSRFCookie();
+            if (!csrfResult.success) {
+                console.warn('CSRF cookie fetch failed, proceeding anyway:', csrfResult.error);
+            }
+
             const response = await this.makeRequest('/auth/admin/login', {
                 method: 'POST',
                 body: JSON.stringify({ email, password })
