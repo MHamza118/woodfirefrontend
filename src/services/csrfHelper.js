@@ -4,7 +4,7 @@ export const fetchCSRFCookie = async () => {
     try {
         const response = await fetch(`${API_BASE_URL}/sanctum/csrf-cookie`, {
             method: 'GET',
-            credentials: 'include', // Important: include cookies
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
             }
